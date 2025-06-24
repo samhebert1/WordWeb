@@ -1,0 +1,90 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
+
+body {
+    font-family: 'Inter', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.node-container {
+    position: absolute;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+    cursor: grab;
+    transition: all 0.15s ease-in-out;
+    border: 2px solid;
+    width: 160px;
+    background-color: #334155; /* slate-700 */
+    border-color: #475569; /* slate-600 */
+}
+
+.node-container:active {
+    cursor: grabbing;
+}
+
+.node-container.selected {
+    background-color: #0c4a6e; /* sky-800 */
+    border-color: #38bdf8; /* sky-400 */
+    transform: scale(1.05);
+}
+
+.node-container.linking {
+    background-color: #ca8a04; /* yellow-600 */
+    border-color: #facc15; /* yellow-400 */
+    animation: pulse 1.5s infinite;
+}
+
+.side-panel {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+    background-color: rgba(30, 41, 59, 0.8); /* slate-800 with opacity */
+    -webkit-backdrop-filter: blur(4px);
+    backdrop-filter: blur(4px);
+    border-left: 1px solid #475569; /* slate-700 */
+    box-shadow: -10px 0 20px -10px rgba(0,0,0,0.25);
+    transition: transform 0.3s ease-in-out;
+    transform: translateX(100%);
+    z-index: 20;
+    width: 384px; /* 96 in tailwind units */
+}
+
+.side-panel.open {
+    transform: translateX(0);
+}
+
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+@keyframes fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes fade-in-up {
+    from { opacity: 0; transform: translateY(20px) scale(0.95); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.animate-fade-in {
+    animation: fade-in 0.2s ease-out forwards;
+}
+
+.animate-fade-in-up {
+    animation: fade-in-up 0.3s ease-out forwards;
+}
+
+[data-lucide] {
+    width: 1.25rem;
+    height: 1.25rem;
+    display: inline-block;
+}
